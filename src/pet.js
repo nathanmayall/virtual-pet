@@ -10,6 +10,9 @@ function Pet(name) {
   this.adoptChild = function (child) {
     this.children.push(child);
   };
+  this.haveBaby = function (child) {
+    this.children.push(new Pet(child));
+  };
 }
 
 Pet.prototype.growUp = function () {

@@ -209,3 +209,15 @@ describe("adoptChild", () => {
     expect(parent.children).toEqual([child]);
   });
 });
+
+describe("haveBaby", () => {
+  it("spawns child pet inside parent array", () => {
+    const pet = new Pet("Fido");
+
+    pet.haveBaby("Rex");
+
+    const child = pet.children[0];
+
+    expect(pet.children).toContain(child);
+  });
+});
