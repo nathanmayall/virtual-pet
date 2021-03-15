@@ -44,6 +44,23 @@ describe("growUp", () => {
 
     expect(pet.fitness).toEqual(7);
   });
+  it("throws an error if the pet is not alive", () => {
+    const pet = new Pet("Fido");
+
+    pet.age = 30;
+
+    expect(() => pet.growUp()).toThrow("Your pet is no longer alive :(");
+  });
+});
+
+describe("feed", () => {
+  it("throws an error if the pet is not alive", () => {
+    const pet = new Pet("Fido");
+
+    pet.age = 30;
+
+    expect(() => pet.feed()).toThrow("Your pet is no longer alive :(");
+  });
 });
 
 describe("walk", () => {
@@ -51,8 +68,9 @@ describe("walk", () => {
     const pet = new Pet("Fido");
 
     pet.growUp();
+    pet.feed();
     pet.growUp();
-
+    pet.feed();
     pet.walk();
 
     expect(pet.fitness).toEqual(8);
@@ -65,6 +83,13 @@ describe("walk", () => {
     pet.walk();
 
     expect(pet.fitness).toEqual(10);
+  });
+  it("throws an error if the pet is not alive", () => {
+    const pet = new Pet("Fido");
+
+    pet.fitness = 0;
+
+    expect(() => pet.walk()).toThrow("Your pet is no longer alive :(");
   });
 });
 
@@ -132,7 +157,15 @@ describe("checkUp", () => {
 
     expect(result).toEqual("I am hungry AND I need a walk");
   });
+  it("your pet is no longer alive when it's dead", () => {
+    const pet = new Pet("Fido");
+
+    pet.hunger = 10;
+
+    expect(() => pet.feed()).toThrow("Your pet is no longer alive :(");
+  });
 });
+
 describe("isAlive", () => {
   it("returns true if fitness is greater than 0, hunger less than 10 and age less than 30", () => {
     const pet = new Pet("Fido");
@@ -145,29 +178,23 @@ describe("isAlive", () => {
   it("returns false if fitness is less than or at 0, hunger more than or at 10", () => {
     const pet = new Pet("Fido");
 
-    for (let i = 0; i < 5; i++) {
-      pet.growUp();
-    }
+    pet.fitness = 0;
+    pet.hunger = 10;
 
     expect(pet.isAlive()).toBe(false);
   });
   it("returns false if age greater than or at 30", () => {
     const pet = new Pet("Fido");
 
-    for (let i = 0; i < 31; i++) {
-      pet.growUp();
-      pet.feed();
-      pet.walk();
-    }
+    pet.age = 31;
+
     expect(pet.isAlive()).toBe(false);
   });
   it("returns false if fitness less than or at 0", () => {
     const pet = new Pet("Fido");
 
-    for (let i = 0; i < 5; i++) {
-      pet.growUp();
-      pet.feed();
-    }
+    pet.fitness = -1;
+
     expect(pet.isAlive()).toBe(false);
   });
 });
