@@ -11,4 +11,8 @@ Pet.prototype.growUp = function () {
   this.fitness -= 3;
 };
 
+Pet.prototype.walk = function () {
+  this.fitness <= 6 ? (this.fitness += 4) : (this.fitness = 10);
+};
+
 module.exports = Pet;
