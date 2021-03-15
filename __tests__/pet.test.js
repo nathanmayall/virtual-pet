@@ -67,3 +67,23 @@ describe("walk", () => {
     expect(pet.fitness).toEqual(10);
   });
 });
+
+describe("hunger", () => {
+  it("takes 3 away from hunger", () => {
+    const pet = new Pet("Fido");
+
+    pet.growUp();
+    pet.feed();
+
+    expect(pet.hunger).toEqual(2);
+  });
+  it("does not decrement hunger past 0", () => {
+    const pet = new Pet("Fido");
+
+    pet.growUp();
+    pet.feed();
+    pet.feed();
+
+    expect(pet.hunger).toEqual(0);
+  });
+});
