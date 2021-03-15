@@ -198,3 +198,14 @@ describe("isAlive", () => {
     expect(pet.isAlive()).toBe(false);
   });
 });
+
+describe("adoptChild", () => {
+  it("attaches child pet to parent", () => {
+    const parent = new Pet("Fido");
+    const child = new Pet("Rex");
+
+    parent.adoptChild(child);
+
+    expect(parent.children).toEqual([child]);
+  });
+});
