@@ -45,3 +45,25 @@ describe("growUp", () => {
     expect(pet.fitness).toEqual(7);
   });
 });
+
+describe("walk", () => {
+  it("adds 4 to fitness", () => {
+    const pet = new Pet("Fido");
+
+    pet.growUp();
+    pet.growUp();
+
+    pet.walk();
+
+    expect(pet.fitness).toEqual(8);
+  });
+  it("does not increment fitness past 10", () => {
+    const pet = new Pet("Fido");
+
+    pet.growUp();
+
+    pet.walk();
+
+    expect(pet.fitness).toEqual(10);
+  });
+});
