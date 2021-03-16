@@ -46,7 +46,7 @@ status = `Pet ${petName} created 🐕`;
 const choices = [
   `🍕 ${chalk.bold.whiteBright("F")}eed`,
   `🚶 ${chalk.bold.whiteBright("W")}alk`,
-  `🩺${chalk.bold.whiteBright("C")}heck up`,
+  `🩺 ${chalk.bold.whiteBright("C")}heck up`,
   `🌱 ${chalk.bold.whiteBright("G")}row up`,
   `❌ E${chalk.bold.whiteBright("x")}it`,
 ];
