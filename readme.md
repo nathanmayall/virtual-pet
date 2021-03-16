@@ -7,6 +7,7 @@ To get started, clone the repo.
 The next 3 steps on your terminal are:
 
 ```Shell
+$ cd virtual-pet
 $ npm i
 $ npm link
 $ virtuapet
