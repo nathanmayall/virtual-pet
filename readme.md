@@ -2,6 +2,16 @@
 
 This project will enable you to have your own little pet.
 
-To use the pet, run `node index.js`
+To get started, clone the repo.
 
-Follow the instructions from the CLI.
+The next 3 steps on your terminal are:
+
+```Shell
+$ npm i
+$ npm link
+$ virtuapet
+```
+
+Follow the instructions from the application from there.
+
+# Happy gaming!
