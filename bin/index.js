@@ -51,6 +51,7 @@ while (alive) {
   clear();
   alive = userPet.isAlive();
   if (status) console.info(chalk.blue(status));
+  if (!alive) break;
   console.error(`${petName} says what's your action?:`);
 
   choices.forEach((c) => console.info(c));
