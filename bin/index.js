@@ -11,13 +11,14 @@ const clear = require("clear");
 const Pet = require("../src/pet");
 
 const saveData = () => {
-  if (fs.existsSync(`${process.cwd()}/data`)) {
+  if (fs.existsSync(`${process.cwd()}/data/`)) {
     fs.writeFileSync(
       `${process.cwd()}/data/petData.json`,
       JSON.stringify(userPet)
     );
+    return;
   }
-  fs.mkdirSync(`${process.cwd()}/data`, 0744);
+  fs.mkdirSync(`${process.cwd()}/data/`, 0744);
   fs.writeFileSync(
     `${process.cwd()}/data/petData.json`,
     JSON.stringify(userPet)
