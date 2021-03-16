@@ -43,7 +43,13 @@ const userPet = new Pet(petName);
 
 status = `Pet ${petName} created 🐕`;
 
-const choices = ["🍕 Feed", "🚶 Walk", "🩺 Checkup", "🌱 Grow up", "❌ Exit"];
+const choices = [
+  `🍕 ${chalk.bold.whiteBright("F")}eed`,
+  `🚶 ${chalk.bold.whiteBright("W")}alk`,
+  `🩺${chalk.bold.whiteBright("C")}heck up`,
+  `🌱 ${chalk.bold.whiteBright("G")}row up`,
+  `❌ E${chalk.bold.whiteBright("x")}it`,
+];
 
 let alive = userPet.isAlive();
 
@@ -59,25 +65,30 @@ while (alive) {
   let response = prompt(`❓: `);
 
   switch (response.toLowerCase().trim()) {
+    case "f":
     case "feed": {
       userPet.feed();
       status = `${petName} was fed and their hunger is now ${userPet.hunger}`;
       break;
     }
+    case "w":
     case "walk": {
       userPet.walk();
       status = `${petName} has been walked and their fitness is now ${userPet.fitness}`;
       break;
     }
-    case "checkup": {
+    case "c":
+    case "check up": {
       status = `${petName} says ${userPet.checkUp()}`;
       break;
     }
+    case "g":
     case "grow up": {
       userPet.growUp();
       status = `${petName}'s age is now ${userPet.age}`;
       break;
     }
+    case "x":
     case "exit": {
       console.warn("Thanks for playing!");
       saveData();
