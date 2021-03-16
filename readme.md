@@ -4,7 +4,7 @@ This project will enable you to have your own little pet.
 
 To get started, clone the repo.
 
-The next 3 steps on your terminal are:
+The next 4 steps on your terminal are:
 
 ```Shell
 $ cd virtual-pet
