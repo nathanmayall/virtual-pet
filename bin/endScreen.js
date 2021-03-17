@@ -1,6 +1,7 @@
 const chalk = require("chalk");
 const clui = require("clui");
 const clear = require("clear");
+const console = require("better-console");
 
 const { outroBox } = require("./titles");
 

@@ -22,7 +22,10 @@ const introBox = (string) => {
 
       console.info(
         chalk.yellow(
-          figlet.textSync(animatedString, { horizontalLayout: "full" })
+          figlet.textSync(animatedString, {
+            horizontalLayout: "full",
+            font: "doh",
+          })
         )
       );
     }, 75);
@@ -41,7 +44,7 @@ const outroBox = (string) => {
       const ending = chalk.whiteBright(
         figlet.textSync(animatedString, {
           horizontalLayout: "full",
-          font: "Ghost",
+          font: "Poison",
         })
       );
       const msgBox = boxen(ending, boxenOptions);
