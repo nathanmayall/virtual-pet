@@ -8,8 +8,7 @@ const clear = require("clear");
 const clui = require("clui");
 
 const Pet = require("../src/pet");
-const introBox = require("./intro");
-const outroBox = require("./outro");
+const { introBox, outroBox } = require("./titles");
 const animate = require("./animate");
 const { walkFrames, feedFrames, checkUpFrames } = require("./frames");
 
@@ -59,8 +58,9 @@ let alive = userPet.isAlive();
 while (alive) {
   clear();
   alive = userPet.isAlive();
-  if (status) console.info(chalk.blue(status));
   if (!alive) break;
+
+  if (status) console.info(chalk.blue(status));
   console.error(`${petName} says what's your action?:`);
 
   choices.forEach((c) => console.info(c));
@@ -108,8 +108,6 @@ while (alive) {
 }
 
 saveData();
-
-const finalScore = `Fitness: ${userPet.fitness}, Hunger: ${userPet.hunger}`;
 
 const ageGuage = clui.Gauge(
   userPet.age,

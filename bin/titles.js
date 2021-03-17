@@ -20,6 +20,24 @@ const introBox = (string) => {
       animatedString += completeString[i];
       clear();
 
+      console.info(
+        chalk.yellow(
+          figlet.textSync(animatedString, { horizontalLayout: "full" })
+        )
+      );
+    }, 75);
+  }
+};
+
+const outroBox = (string) => {
+  let animatedString = "";
+  const completeString = string;
+
+  for (let i = 0; i < completeString.length; i++) {
+    setTimeoutSync(() => {
+      animatedString += completeString[i];
+      clear();
+
       const ending = chalk.whiteBright(
         figlet.textSync(animatedString, {
           horizontalLayout: "full",
@@ -44,4 +62,4 @@ function setTimeoutSync(callback, ms) {
     callback();
   }
 }
-module.exports = introBox;
+module.exports = { introBox, outroBox };
