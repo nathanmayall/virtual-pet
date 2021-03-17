@@ -5,10 +5,10 @@ const fs = require("fs");
 const console = require("better-console");
 const chalk = require("chalk");
 const clear = require("clear");
-const clui = require("clui");
 
 const Pet = require("../src/pet");
-const { introBox, outroBox } = require("./titles");
+const { introBox } = require("./titles");
+const endScreen = require("./endScreen");
 const animate = require("./animate");
 const { walkFrames, feedFrames, checkUpFrames } = require("./frames");
 
@@ -109,35 +109,4 @@ while (alive) {
 
 saveData();
 
-const ageGuage = clui.Gauge(
-  userPet.age,
-  30,
-  10,
-  25,
-  `${userPet.age} years old`
-);
-const fitnessGuage = clui.Gauge(
-  userPet.fitness,
-  10,
-  10,
-  4,
-  `${userPet.fitness} fitness level`
-);
-
-const hungerGuage = clui.Gauge(
-  userPet.hunger,
-  10,
-  10,
-  3,
-  `${userPet.hunger} hunger`
-);
-
-clear();
-outroBox("RIP");
-console.error(`⚰️  Sorry, ${petName} has passed away 😿`);
-console.info(chalk.blue("Stats were:"));
-console.info(ageGuage);
-console.info(fitnessGuage);
-console.info(hungerGuage);
-console.warn("Thanks for playing!");
-process.exit();
+endScreen(userPet);
