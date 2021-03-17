@@ -4,7 +4,7 @@ const console = require("better-console");
 const figlet = require("figlet");
 const clear = require("clear");
 
-const introAnimate = (string) => {
+const introBox = (string) => {
   let animatedString = "";
   const completeString = string;
 
@@ -22,12 +22,6 @@ const introAnimate = (string) => {
   }
 };
 
-const introBox = (string) => {
-  introAnimate(string);
-};
-
-module.exports = introBox;
-
 function setTimeoutSync(callback, ms) {
   const start = Date.now();
   let now = start;
@@ -40,3 +34,4 @@ function setTimeoutSync(callback, ms) {
     callback();
   }
 }
+module.exports = introBox;
