@@ -4,12 +4,14 @@ const prompt = require("prompt-sync")({ sigint: true });
 const fs = require("fs");
 const console = require("better-console");
 const chalk = require("chalk");
-const boxen = require("boxen");
-const figlet = require("figlet");
 const clear = require("clear");
+const clui = require("clui");
 
 const Pet = require("../src/pet");
 const introBox = require("./intro");
+const outroBox = require("./outro");
+const animate = require("./animate");
+const { walkFrames, feedFrames, checkUpFrames } = require("./frames");
 
 const saveData = () => {
   if (fs.existsSync(`${process.cwd()}/data/`)) {
@@ -69,17 +71,20 @@ while (alive) {
     case "f":
     case "feed": {
       userPet.feed();
+      animate(feedFrames);
       status = `${petName} was fed and their hunger is now ${userPet.hunger}`;
       break;
     }
     case "w":
     case "walk": {
       userPet.walk();
+      animate(walkFrames);
       status = `${petName} has been walked and their fitness is now ${userPet.fitness}`;
       break;
     }
     case "c":
     case "check up": {
+      animate(checkUpFrames);
       status = `${petName} says ${userPet.checkUp()}`;
       break;
     }
@@ -104,23 +109,37 @@ while (alive) {
 
 saveData();
 
-const boxenOptions = {
-  padding: 1,
-  margin: 1,
-  borderStyle: "double",
-  borderColor: "red",
-};
+const finalScore = `Fitness: ${userPet.fitness}, Hunger: ${userPet.hunger}`;
 
-const ending = chalk.whiteBright(
-  figlet.textSync("RIP", { horizontalLayout: "full", font: "Ghost" })
+const ageGuage = clui.Gauge(
+  userPet.age,
+  30,
+  10,
+  25,
+  `${userPet.age} years old`
 );
-const msgBox = boxen(ending, boxenOptions);
+const fitnessGuage = clui.Gauge(
+  userPet.fitness,
+  10,
+  10,
+  4,
+  `${userPet.fitness} fitness level`
+);
 
-const finalScore = `Age: ${userPet.age}, Fitness: ${userPet.fitness}, Hunger: ${userPet.hunger}`;
+const hungerGuage = clui.Gauge(
+  userPet.hunger,
+  10,
+  10,
+  3,
+  `${userPet.hunger} hunger`
+);
 
 clear();
-console.info(msgBox);
+outroBox("RIP");
 console.error(`⚰️  Sorry, ${petName} has passed away 😿`);
-console.info(`Final stats were: ${finalScore}`);
+console.info(chalk.blue("Stats were:"));
+console.info(ageGuage);
+console.info(fitnessGuage);
+console.info(hungerGuage);
 console.warn("Thanks for playing!");
 process.exit();
