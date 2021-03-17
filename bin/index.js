@@ -9,6 +9,7 @@ const figlet = require("figlet");
 const clear = require("clear");
 
 const Pet = require("../src/pet");
+const introBox = require("./intro");
 
 const saveData = () => {
   if (fs.existsSync(`${process.cwd()}/data/`)) {
@@ -26,9 +27,9 @@ const saveData = () => {
 };
 
 clear();
-console.info(
-  chalk.yellow(figlet.textSync("VirtuaPet", { horizontalLayout: "full" }))
-);
+
+introBox("VirtuaPet");
+
 console.info("Welcome to Virtual Pet Simulator.");
 let petName = prompt("Enter the name of the pet: ");
 
@@ -62,9 +63,9 @@ while (alive) {
 
   choices.forEach((c) => console.info(c));
 
-  let response = prompt(`❓: `);
+  let response = prompt(`❓: `).toLowerCase().trim();
 
-  switch (response.toLowerCase().trim()) {
+  switch (response) {
     case "f":
     case "feed": {
       userPet.feed();

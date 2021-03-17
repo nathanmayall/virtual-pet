@@ -5,7 +5,7 @@ function Pet(name) {
   this.fitness = 10;
   this.children = [];
   this.isAlive = function () {
-    return this.fitness > 0 && this.hunger < 10 && this.age < 30 ? true : false;
+    return this.fitness > 0 && this.hunger < 10 && this.age < 30;
   };
   this.adoptChild = function (child) {
     this.children.push(child);
