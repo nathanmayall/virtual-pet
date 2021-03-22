@@ -24,7 +24,7 @@ const introBox = (string) => {
         chalk.yellow(
           figlet.textSync(animatedString, {
             horizontalLayout: "full",
-            font: "doh",
+            font: "bigchief",
           })
         )
       );
