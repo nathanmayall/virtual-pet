@@ -24,7 +24,7 @@ const introBox = (string) => {
         chalk.yellow(
           figlet.textSync(animatedString, {
             horizontalLayout: "full",
-            font: "bigchief",
+            font: "Epic",
           })
         )
       );
@@ -65,4 +65,4 @@ function setTimeoutSync(callback, ms) {
     callback();
   }
 }
-module.exports = { introBox, outroBox };
+module.exports = { introBox, outroBox, setTimeoutSync };
