@@ -19,7 +19,7 @@ const endScreen = ({ name: petName, age, fitness, hunger }) => {
 
   clear();
   outroBox("RIP");
-  console.error(`⚰️  Sorry, ${petName} has passed away 😿`);
+  console.error(`⚰️ Sorry, ${petName} has passed away 😿`);
   console.info(chalk.blue("Stats were:"));
   console.info(ageGuage);
   console.info(fitnessGuage);
