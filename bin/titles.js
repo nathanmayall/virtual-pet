@@ -3,6 +3,7 @@ const chalk = require("chalk");
 const console = require("better-console");
 const figlet = require("figlet");
 const clear = require("clear");
+const setTimeoutSync = require("./setTimeoutSync");
 
 const boxenOptions = {
   padding: 1,
@@ -53,16 +54,4 @@ const outroBox = (string) => {
   }
 };
 
-function setTimeoutSync(callback, ms) {
-  const start = Date.now();
-  let now = start;
-
-  while (now - start < ms) {
-    now = Date.now();
-  }
-
-  if (typeof callback === "function") {
-    callback();
-  }
-}
-module.exports = { introBox, outroBox, setTimeoutSync };
+module.exports = { introBox, outroBox };

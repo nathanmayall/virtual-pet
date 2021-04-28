@@ -24,5 +24,15 @@
     "figlet": "^1.5.0",
     "fs": "^0.0.1-security",
     "prompt-sync": "^4.2.0"
+  },
+  "pkg": {
+    "scripts": [],
+    "assets": [
+      "./node_modules/figlet/fonts/Epic.flf",
+      "./node_modules/figlet/fonts/Poison.flf"
+    ],
+    "targets": [
+      "node14"
+    ]
   }
 }

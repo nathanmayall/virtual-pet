@@ -1,7 +1,7 @@
 // const boxen = require("boxen");
 const chalk = require("chalk");
 const console = require("better-console");
-const setTimeoutSync = require("./titles");
+const setTimeoutSync = require("./setTimeoutSync");
 
 const animate = (arr) => {
   arr.forEach((element) => {

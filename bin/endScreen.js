@@ -2,6 +2,7 @@ const chalk = require("chalk");
 const clui = require("clui");
 const clear = require("clear");
 const console = require("better-console");
+const prompt = require("prompt-sync")({ sigint: true });
 
 const { outroBox } = require("./titles");
 
@@ -16,6 +17,7 @@ const endScreen = ({ name: petName, age, fitness, hunger }) => {
   );
 
   const hungerGuage = clui.Gauge(hunger, 10, 10, 3, `${hunger} hunger`);
+  let input = "";
 
   clear();
   outroBox("RIP");
@@ -24,7 +26,7 @@ const endScreen = ({ name: petName, age, fitness, hunger }) => {
   console.info(ageGuage);
   console.info(fitnessGuage);
   console.info(hungerGuage);
-  console.warn("Thanks for playing!");
+  prompt(console.warn("Thanks for playing! Press any key to exit."));
   process.exit();
 };
 
