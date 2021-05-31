@@ -30,10 +30,14 @@
     "scripts": [],
     "assets": [
       "./node_modules/figlet/fonts/Epic.flf",
-      "./node_modules/figlet/fonts/Poison.flf"
+      "./node_modules/figlet/fonts/Poison.flf",
+      "./node_modules/iconv/build/Release/iconv.node",
+      "./node_modules/ref-napi/prebuilds/win32-x64/node.napi.node",
+      "./node_modules/ffi-napi/prebuilds/win32-x64/node.napi.uv1.node",
+      "./node_modules/ref-struct-napi/node_modules/ref-napi/prebuilds/win32-x64/node.napi.node"
     ],
     "targets": [
-      "node14"
+      "win"
     ]
   }
 }
