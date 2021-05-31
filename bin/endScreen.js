@@ -17,7 +17,6 @@ const endScreen = ({ name: petName, age, fitness, hunger }) => {
   );
 
   const hungerGuage = clui.Gauge(hunger, 10, 10, 3, `${hunger} hunger`);
-  let input = "";
 
   clear();
   outroBox("RIP");
@@ -26,8 +25,10 @@ const endScreen = ({ name: petName, age, fitness, hunger }) => {
   console.info(ageGuage);
   console.info(fitnessGuage);
   console.info(hungerGuage);
-  prompt(console.warn("Thanks for playing! Press any key to exit."));
-  process.exit();
+  const endPrompt = prompt(
+    console.warn("Thanks for playing! Press any key to exit.")
+  );
+  if (endPrompt) process.exit();
 };
 
 module.exports = endScreen;

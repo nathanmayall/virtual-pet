@@ -11,6 +11,13 @@ const { introBox } = require("./titles");
 const endScreen = require("./endScreen");
 const animate = require("./animate");
 const { walkFrames, feedFrames, checkUpFrames } = require("./frames");
+const setTimeoutSync = require("./setTimeoutSync");
+
+const activeWindow = require("active-win");
+
+const windowTitle = activeWindow.sync().owner.name;
+
+const isCmd = !windowTitle.includes("WindowsTerminal");
 
 const saveData = () => {
   if (fs.existsSync(`${process.cwd()}/data/`)) {
@@ -43,15 +50,31 @@ let status = "";
 
 const userPet = new Pet(petName);
 
-status = `Pet ${petName} created 🐕`;
+status = isCmd ? `Pet ${petName} created` : `Pet ${petName} created 🐕`;
 
-const choices = [
-  `🍕 ${chalk.bold.whiteBright("F")}eed`,
-  `🚶 ${chalk.bold.whiteBright("W")}alk`,
-  `🩺 ${chalk.bold.whiteBright("C")}heck up`,
-  `🌱 ${chalk.bold.whiteBright("G")}row up`,
-  `❌ E${chalk.bold.whiteBright("x")}it`,
+let choices;
+
+const highlightChar = (string, index) => {
+  return string.replace(string[index], chalk.bold.whiteBright(string[index]));
+};
+
+const emojiChoices = [
+  `🍕 ${highlightChar("Feed", 0)}`,
+  `🚶 ${highlightChar("Walk", 0)}`,
+  `🩺 ${highlightChar("Check Up", 0)}`,
+  `🌱 ${highlightChar("Grow Up", 0)}`,
+  `❌ ${highlightChar("Exit", 1)}`,
 ];
+
+const consoleChoices = [
+  `${highlightChar("Feed", 0)}`,
+  `${highlightChar("Walk", 0)}`,
+  `${highlightChar("Check Up", 0)}`,
+  `${highlightChar("Grow Up", 0)}`,
+  `${highlightChar("Exit", 1)}`,
+];
+
+choices = isCmd ? consoleChoices : emojiChoices;
 
 let alive = userPet.isAlive();
 
@@ -65,7 +88,9 @@ while (alive) {
 
   choices.forEach((c) => console.info(c));
 
-  let response = prompt(`❓: `).toLowerCase().trim();
+  const questionprompt = isCmd ? "?: " : `❓: `;
+
+  let response = prompt(questionprompt).toLowerCase().trim();
 
   switch (response) {
     case "f":
@@ -96,7 +121,7 @@ while (alive) {
     }
     case "x":
     case "exit": {
-      console.warn("Thanks for playing!");
+      setTimeoutSync(console.warn("Thanks for playing!"), 1000);
       saveData();
       process.exit();
     }
